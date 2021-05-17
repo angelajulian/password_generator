@@ -11,13 +11,9 @@ function generatePassword() {
     password_length % 1 != 0
   ) {
     alert(
-      "Your password must be no less than 8 and no more than 128 characters. It cannot be a decimal. Try Again."
+      "Your password must be a number no less than 8 and no more than 128 characters. It cannot be a decimal. Try Again."
     );
     // validate password length is a number, or throw error
-  } else if (isNaN(password_length)) {
-    alert(
-      "Enter a number for length. No letters, special characters, or decimals."
-    );
   } else {
     // ask what characters to use for password
     let lower_case = confirm(
@@ -59,39 +55,8 @@ function generatePassword() {
         }
         if (special_characters && i < password_length) {
           i = i + 1;
-          var special = [
-            "`",
-            "~",
-            "!",
-            "@",
-            "'",
-            '"',
-            "#",
-            "$",
-            ".",
-            ",",
-            "%",
-            "^",
-            "&",
-            "*",
-            "(",
-            ")",
-            "-",
-            "_",
-            "=",
-            "+",
-            ";",
-            ":",
-            "[",
-            "{",
-            "]",
-            "}",
-            "|",
-            "?",
-            "/",
-            "<",
-            ">",
-          ];
+          var special = "`~!@'#$.,%^&*()-_=+;:[{]}|?/<>" + '"';
+
           // add special character to password_array
           password_array.push(
             special[Math.floor(Math.random() * special.length)]
