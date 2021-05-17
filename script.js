@@ -1,5 +1,7 @@
 // Assignment code here
+
 function generatePassword() {
+  var password = "";
   let password_length = prompt(
     "What length should you password be? Enter a number between 8 and 128:"
   );
@@ -31,14 +33,46 @@ function generatePassword() {
     );
 
     let yeses = [lower_case, upper_case, numbers, special_characters];
-    console.log(yeses);
     if (yeses.includes(true)) {
-      alert("generate a password");
+      var alphabet = "abcdefghijklmnopqrstuvwxyz";
+      var password_array = [];
+      var i = 0;
+      while (i < password_length) {
+        if (lower_case && i < password_length) {
+          i = i + 1;
+          // add lowercase letter to password_array
+          password_array.push(
+            alphabet[Math.floor(Math.random() * alphabet.length)]
+          );
+        }
+        if (upper_case && i < password_length) {
+          i = i + 1;
+          // add uppercase letter to password_array
+          password_array.push(
+            alphabet[Math.floor(Math.random() * alphabet.length)].toUpperCase()
+          );
+        }
+        if (numbers && i < password_length) {
+          i = i + 1;
+          // add number to password_array
+          password_array.push(Math.floor(Math.random() * 10));
+        }
+        if (special_characters && i < password_length) {
+          i = i + 1;
+          var special = "~!@#$%^&*()_+`-=[]{};':|<>?/,." + '"';
+          // add special character to password_array
+          password_array.push(
+            special[Math.floor(Math.random() * special.length)]
+          );
+        }
+      }
+      //scramble password_array & convert to string "password"
+      password = password_array.join("");
+      return password;
     } else
       alert(
         "You must include at least one character set to generate a password."
       );
-    return password;
   }
 }
 
