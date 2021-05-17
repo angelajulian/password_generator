@@ -1,4 +1,5 @@
 // Assignment code here
+
 function generatePassword() {
   var password = "";
   let password_length = prompt(
@@ -28,7 +29,6 @@ function generatePassword() {
     );
 
     let yeses = [lower_case, upper_case, numbers, special_characters];
-    console.log(yeses);
     if (yeses.includes(true)) {
       var alphabet = "abcdefghijklmnopqrstuvwxyz";
       var password_array = [];
@@ -55,8 +55,7 @@ function generatePassword() {
         }
         if (special_characters && i < password_length) {
           i = i + 1;
-          var special = "`~!@'#$.,%^&*()-_=+;:[{]}|?/<>" + '"';
-
+          var special = "~!@#$%^&*()_+`-=[]{};':|<>?/,." + '"';
           // add special character to password_array
           password_array.push(
             special[Math.floor(Math.random() * special.length)]
@@ -65,11 +64,11 @@ function generatePassword() {
       }
       //scramble password_array & convert to string "password"
       password = password_array.join("");
+      return password;
     } else
       alert(
         "You must include at least one character set to generate a password."
       );
-    return password;
   }
 }
 
